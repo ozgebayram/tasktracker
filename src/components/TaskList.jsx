@@ -7,7 +7,7 @@ const TaskList = ({task,getTasks}) => {
 	<div>
     <table className="table mb-4 text-white">
                     <thead>
-                      <tr>
+                      <tr >
                         <th scope="col">No.</th>
                         <th scope="col">Task</th>
                         <th scope="col">Date</th>
@@ -18,7 +18,7 @@ const TaskList = ({task,getTasks}) => {
                       {task?.map((item)=>{
                         const {id,date,tasks}= item;
                         return(
-                        <tr>
+                        <tr key={id}>
                         <th scope="row">{id}</th>
                         <td>{tasks}</td>
                         <td>{date}</td>
