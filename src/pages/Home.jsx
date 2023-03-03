@@ -1,74 +1,45 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState,useEffect} from 'react'
+import AddTask from '../components/AddTask'
+import TaskList from '../components/TaskList'
 
 const Home = () => {
+  const [task,setTask]=useState([]);
+  
+  const url = "https://63f6a4a39daf59d1ad8c3818.mockapi.io/api/tasks"
+
+  const getTasks= async ()=>{
+    try {
+      const {data} = await axios(url);
+      setTask(data)
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getTasks()
+  }, [])
+  
   return (
-	<div>
-	<section className="vh-100" style={{backgroundColor: '#eee'}}>
-        <div className="container py-5 h-100">
+	
+	<section className="vh-100" style={{backgroundColor: '#b0cecb'}}>
+        <div className="container py-5 h-100  "  >
           <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col col-lg-9 col-xl-7">
-              <div className="card rounded-3">
-                <div className="card-body p-4">
-                  <h4 className="text-center my-3 pb-3">Task Tracker</h4>
-                  <form className="row row-cols g-3 justify-content-center align-items-center mb-4 pb-2">
-                    <div className="col-12">
-                      <div className="form-outline mb-3" >
-                        <input  type="text" id="form1" className="form-control" placeholder='Task here...' />
-                      </div>
-					  <div>
-						<input type="date" id="form1" className="form-control" />
-					  </div>
-                    </div>
-                    <div className="col63">
-                      <button type="submit" className="btn btn-warning">Get tasks</button>
-                    </div>
-                  </form>
-                  <table className="table mb-4">
-                    <thead>
-                      <tr>
-                        <th scope="col">No.</th>
-                        <th scope="col">Todo item</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Buy groceries for next week</td>
-                        <td>In progress</td>
-                        <td>
-                          <button type="submit" className="btn btn-danger">Delete</button>
-                          <button type="submit" className="btn btn-success ms-1">Finished</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Renew car insurance</td>
-                        <td>In progress</td>
-                        <td>
-                          <button type="submit" className="btn btn-danger">Delete</button>
-                          <button type="submit" className="btn btn-success ms-1">Finished</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Sign up for online course</td>
-                        <td>In progress</td>
-                        <td>
-                          <button type="submit" className="btn btn-danger">Delete</button>
-                          <button type="submit" className="btn btn-success ms-1">Finished</button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+            <div className="col col-lg-9 col-xl-7  rounded-3" >
+              <div className="card rounded-3 p-2 bg-secondary bg-gradient">
+                <div className="card-body p-4 rounded-3" style={{backgroundColor: '#35353b'}}>
+                  <h4 className="text-center my-3 pb-3 text-white">Task Tracker</h4>
+                  <AddTask/>
+                  <TaskList task={task} getTasks={getTasks}/>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-	</div>
+	
   )
 }
 
