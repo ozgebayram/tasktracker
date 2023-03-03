@@ -23,7 +23,9 @@ const TaskList = ({task,getTasks}) => {
                         <td>{tasks}</td>
                         <td>{date}</td>
                         <td>
-                        <FiDelete/>
+                        <FiDelete
+                        size={22}
+                        type="button"/>
                         </td>
                       </tr>
                       )})}

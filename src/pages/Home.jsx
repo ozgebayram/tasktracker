@@ -31,7 +31,7 @@ const Home = () => {
               <div className="card rounded-3 p-2 bg-secondary bg-gradient">
                 <div className="card-body p-4 rounded-3" style={{backgroundColor: '#35353b'}}>
                   <h4 className="text-center my-3 pb-3 text-white">Task Tracker</h4>
-                  <AddTask/>
+                  <AddTask getTasks={getTasks}/>
                   <TaskList task={task} getTasks={getTasks}/>
                 </div>
               </div>
