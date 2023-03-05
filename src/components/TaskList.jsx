@@ -1,17 +1,18 @@
 import React from 'react'
 import {FiDelete} from 'react-icons/fi'
+import axios from 'axios'
+
 
 
 const TaskList = ({task,getTasks}) => {
-  const handleDelete=()=>{
+  const handleDelete = async (id) => {
     const url = "https://63f6a4a39daf59d1ad8c3818.mockapi.io/api/tasks"
-
     try {
-      
+      await axios.delete(`${url}/${id}`)
     } catch (error) {
-      
+      console.log(error);
     }
-
+    getTasks()
   }
   return (
 	<div>
@@ -36,7 +37,12 @@ const TaskList = ({task,getTasks}) => {
                         <FiDelete
                         size={22}
                         type="button"
-                        onClick={()=>{handleDelete}}/>
+                        onClick={() => handleDelete(id)}
+                        style={{
+                        fontSize:"2rem",                    
+                        filter: "drop-shadow(4px 3px 2px rgb(0 0 0 / 0.9)"
+                      }}
+                        />
                         </td>
                       </tr>
                       )})}

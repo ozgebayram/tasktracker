@@ -33,7 +33,7 @@ const AddTask = ({getTasks}) => {
 						<input type="date" id="form1" className="form-control" value={date} onChange={(e)=> setDate(e.target.value)}/>
 					  </div>
                     </div>
-                    <div className="">
+                    <div className="d-flex justify-content-center">
                       <button type="submit" style={{backgroundColor: '#867514'}} className="btn text-light">Get tasks</button>
                     </div>
                   </form>
