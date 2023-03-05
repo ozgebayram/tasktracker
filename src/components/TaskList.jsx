@@ -3,6 +3,16 @@ import {FiDelete} from 'react-icons/fi'
 
 
 const TaskList = ({task,getTasks}) => {
+  const handleDelete=()=>{
+    const url = "https://63f6a4a39daf59d1ad8c3818.mockapi.io/api/tasks"
+
+    try {
+      
+    } catch (error) {
+      
+    }
+
+  }
   return (
 	<div>
     <table className="table mb-4 text-white">
@@ -25,7 +35,8 @@ const TaskList = ({task,getTasks}) => {
                         <td>
                         <FiDelete
                         size={22}
-                        type="button"/>
+                        type="button"
+                        onClick={()=>{handleDelete}}/>
                         </td>
                       </tr>
                       )})}
