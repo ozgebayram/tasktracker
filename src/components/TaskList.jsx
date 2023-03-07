@@ -5,6 +5,8 @@ import axios from 'axios'
 
 
 const TaskList = ({task,getTasks}) => {
+
+  // DELETE
   const handleDelete = async (id) => {
     const url = "https://63f6a4a39daf59d1ad8c3818.mockapi.io/api/tasks"
     try {
